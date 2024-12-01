@@ -1,7 +1,6 @@
 def parse_data(raw):
   l = raw.splitlines()
   return [int(x.split()[0]) for x in l], [int(x.split()[1]) for x in l]
-  
 
 def solve_part1(data):
   l, r = sorted(data[0]), sorted(data[1])
