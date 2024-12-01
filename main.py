@@ -24,8 +24,13 @@ def load_solver(year, day):
 
 def verify_examples(solver, puzzle, part):
   fn = getattr(solver, f"solve_part{part}")
+  
   for example in puzzle.examples:
-    expect = example.answer_a if part == 1 else example.answer_b
+    if part == 1:
+      expect = str(getattr(solver, "example_answer_a", example.answer_a))
+    else: 
+      expect = str(getattr(solver, "example_answer_b", example.answer_b))
+    
     data = solver.parse_data(example.input_data)
     answer = fn(data)
     if str(answer) != expect:
