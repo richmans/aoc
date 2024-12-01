@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 from datetime import datetime
 from aocd.models import Puzzle
@@ -60,7 +61,7 @@ def main(args):
 
 current_year = datetime.now().year
 current_month = datetime.now().month
-if current_month == 12:
+if current_month == 12 and datetime.now().day < 27:
   current_day = datetime.now().day
 else:
   current_day = None
