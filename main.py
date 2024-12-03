@@ -27,11 +27,13 @@ def verify_examples(solver, puzzle, part):
   
   for example in puzzle.examples:
     if part == 1:
+      input_data = getattr(solver, "example_a", example.input_data)
       expect = str(getattr(solver, "example_answer_a", example.answer_a))
     else: 
+      input_data = getattr(solver, "example_b", example.input_data)
       expect = str(getattr(solver, "example_answer_b", example.answer_b))
     
-    data = solver.parse_data(example.input_data)
+    data = solver.parse_data(input_data)
     answer = fn(data)
     if str(answer) != expect:
       logging.error(f"Example failed for part {part}. Expecting {expect} but got {answer}")
